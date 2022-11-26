@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    {% block title %}<title>Ekka - Store</title>{% endblock %}
+    <meta name="keywords"
+          content="apparel, catalog, clean, ecommerce, ecommerce HTML, electronics, fashion, html eCommerce, html store, minimal, multipurpose, multipurpose ecommerce, online store, responsive ecommerce template, shops"/>
+    <meta name="description" content="Best ecommerce store for multi products .">
+    <meta name="author" content="Dantech">
+
+    <!-- site Favicon -->
+    <link rel="icon" href="{% static 'store/assets/images/favicon/favicon.png" sizes="32x32"/>
+    <link rel="apple-touch-icon" href="{% static 'store/assets/images/favicon/favicon.png"/>
+    <meta name="msapplication-TileImage" content="{% static 'store/assets/images/favicon/favicon.png"/>
+
+    <!-- css Icon Font -->
+    <link rel="stylesheet" href="{% static 'store/assets/css/vendor/ecicons.min.css' %}"/>
+
+    <!-- css All Plugins Files -->
+    <link rel="stylesheet" href="{% static 'store/assets/css/plugins/animate.css' %}"/>
+    <link rel="stylesheet" href="{% static 'store/assets/css/plugins/swiper-bundle.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'store/assets/css/plugins/jquery-ui.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'store/assets/css/plugins/countdownTimer.css' %}"/>
+    <link rel="stylesheet" href="{% static 'store/assets/css/plugins/slick.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'store/assets/css/plugins/nouislider.css' %}"/>
+    <link rel="stylesheet" href="{% static 'store/assets/css/plugins/bootstrap.css' %}"/>
+
+    <!-- Main Style -->
+    <link rel="stylesheet" href="{% static 'store/assets/css/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'store/assets/css/responsive.css' %}"/>
+
+    <!-- Background css -->
+    <link rel="stylesheet" id="bg-switcher-css" href="{% static 'store/assets/css/backgrounds/bg-4.css' %}">
+
+</head>
+<body>
+{% include "account/registration/header.html" %}
+{% include "account/registration/cart.html" %}
+{% block content %}
+{% endblock %}
+{% include "account/registration/footer.html" %}
+{% include "account/registration/footer_nav.html" %}
+{% include "account/registration/js.html" %}
+</body>
+</html>
