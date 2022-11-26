@@ -39,7 +39,7 @@
             <div class="ec-register-wrapper">
                 <div class="ec-register-container">
                     <div class="ec-register-form">
-                        <form action="#" method="post">
+                        <form action="" method="POST">
                                 <span class="ec-register-wrap ec-register-half">
                                     <label>First Name*</label>
                                     <input type="text" name="firstname" placeholder="Enter your first name" required/>
@@ -54,10 +54,21 @@
                                 </span>
                             <span class="ec-register-wrap ec-register-half">
                                     <label>Phone Number*</label>
-                                    <input type="text" name="phonenumber" placeholder="Enter your phone number"
+                                    <input type="text" name="phone_number" placeholder="Enter your phone number"
                                            required/>
                                 </span>
 
+                            <span class="ec-register-wrap ec-register-half">
+                                    <label>Password*</label>
+                                    <input type="password" name="password" placeholder="Enter your password"
+                                           required/>
+                                </span>
+                            <span class="ec-register-wrap ec-register-half">
+                                    <label>Password Again*</label>
+                                    <input type="password" name="password_again" placeholder="Enter your password again"
+                                           required/>
+                                </span>
+                            {% csrf_token %}
                             <span class="ec-register-wrap ec-register-btn">
                                     <button class="btn btn-primary" type="submit">Register</button>
                                 </span>
