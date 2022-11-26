@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'imagekit',
     # my apps
     'account',
+    'store',
 
 ]
 

@@ -34,7 +34,8 @@ class User(AbstractBaseUser, PermissionsMixin, TrackingModel):
 
 class Customer(TrackingModel, models.Model):
     user = models.OneToOneField(User, verbose_name="Customer", related_name='customer', on_delete=models.CASCADE)
-    name = models.CharField(max_length=150, blank=True)
+    first_name = models.CharField(max_length=150, blank=True)
+    last_name = models.CharField(max_length=150, blank=True)
     mobile = models.CharField(max_length=150)
 
     def str(self):
