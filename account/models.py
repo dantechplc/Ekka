@@ -81,3 +81,12 @@ class Address(TrackingModel, models.Model):
 
     def __str__(self):
         return str(self.customer)
+
+
+class Verify(models.Model):
+    user = models.ForeignKey(User, related_name='verify_handle', on_delete=models.CASCADE)
+    token = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    date_created = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.token}'
