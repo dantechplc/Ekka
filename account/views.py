@@ -2,7 +2,7 @@ import uuid
 from django.contrib.auth import get_user_model
 from django.shortcuts import render, redirect, reverse
 
-
+from helpers.utility import send_verification_mail
 from .forms import SignUpForm
 from .models import Customer, Verify
 
@@ -27,13 +27,14 @@ def register_view(request):
             else:
                 user.set_password(password)
                 user.is_customer = True
-                user.is_active = True
                 user.save()
                 customer = Customer.objects.create(
                     user=user, first_name=f_name, last_name=l_name, mobile=phone)
                 customer.save()
-                obj = Verify.objects.create(user=user, token=uuid.uuid4())
+                gen_token = uuid.uuid4()
+                obj = Verify.objects.create(user=user, token=gen_token)
                 obj.save()
+                send_verification_mail(token=gen_token)
                 return redirect('/')
 
     else:
@@ -48,6 +49,6 @@ def verify_user(request, token):
     user = obj.user
     user.is_active = True  # change status to active to enable login
     user.save()
-    del obj  # delete verify_instance after successful verification
+    del obj # delete verify_instance after successful verification
     # return redirect(reverse('account:login'))  #to be implement
     return redirect('/')
