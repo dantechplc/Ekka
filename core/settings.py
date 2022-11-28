@@ -126,6 +126,6 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.AllowAllUsersModelBackend',
-    'accounts.backend.CaseInsensitiveModelBackend'
+    'account.backend.CaseInsensitiveModelBackend'
 
 )
