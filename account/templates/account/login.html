@@ -1,0 +1,73 @@
+{% extends "account/registration/layout.html" %}
+{% block title %}<title> Ekka | Register</title> {% endblock %}
+{% block content %}
+
+<!-- Ec breadcrumb start -->
+<div class="sticky-header-next-sec  ec-breadcrumb section-space-mb">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="row ec_breadcrumb_inner">
+                    <div class="col-md-6 col-sm-12">
+                        <h2 class="ec-breadcrumb-title">Register</h2>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <!-- ec-breadcrumb-list start -->
+                        <ul class="ec-breadcrumb-list">
+                            <li class="ec-breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="ec-breadcrumb-item active">Register</li>
+                        </ul>
+                        <!-- ec-breadcrumb-list end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Ec breadcrumb end -->
+<!-- Start Register -->
+<section class="ec-page-content section-space-p">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="section-title">
+                    <h2 class="ec-bg-title">Login</h2>
+                    <h2 class="ec-title">Login</h2>
+                    <p class="sub-title mb-3">Best place to buy and sell digital products</p>
+                    {% for message in messages %}
+                    {% if message.tags == 'warning' %}
+                    <p id="messages" style="color:red;">{{message}}</p>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="ec-login-wrapper">
+                <div class="ec-login-container">
+                    <div class="ec-login-form">
+                        <form action="#" method="post">
+                            {% csrf_token %}
+                            <span class="ec-login-wrap">
+                                    <label>Email Address*</label>
+                                    <input type="email" name="email" placeholder="Enter your email add..." required/>
+                                </span>
+                            <span class="ec-login-wrap">
+                                    <label>Password*</label>
+                                    <input type="password" name="password" placeholder="Enter your password" required/>
+                                </span>
+                            <span class="ec-login-wrap ec-login-fp">
+                                    <label><a href="#">Forgot Password?</a></label>
+                                </span>
+                            <span class="ec-login-wrap ec-login-btn">
+                                    <button class="btn btn-primary" type="submit">Login</button>
+                                    <a href="{% url 'account:register' %}" class="btn btn-secondary">Register</a>
+                                </span>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Register -->
+
+{% endblock content %}

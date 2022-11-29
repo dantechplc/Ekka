@@ -34,38 +34,69 @@
                     <h2 class="ec-bg-title">Register</h2>
                     <h2 class="ec-title">Register</h2>
                     <p class="sub-title mb-3">Best place to buy and sell digital products</p>
+                    {% for message in messages %}
+                    <p id="messages" style="color:green;">{{message}}</p>
+                    {% endfor %}
                 </div>
             </div>
             <div class="ec-register-wrapper">
                 <div class="ec-register-container">
                     <div class="ec-register-form">
-                        <form action="" method="POST">
-                                <span class="ec-register-wrap ec-register-half">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <span class="ec-register-wrap ec-register-half">
                                     <label>First Name*</label>
-                                    <input type="text" name="firstname" placeholder="Enter your first name" required/>
+                                    <input {% if signup_form.is_bound %} value="{{ signup_form.firstname.value }}"
+                                           {% endif %} type="text" name="firstname"
+                                           placeholder="Enter your first name"
+                                           required/>
                                 </span>
                             <span class="ec-register-wrap ec-register-half">
                                     <label>Last Name*</label>
-                                    <input type="text" name="lastname" placeholder="Enter your last name" required/>
+                                    <input
+                                            {% if signup_form.is_bound %} value="{{ signup_form.lastname.value }}"
+                                            {% endif %} type="text" name="lastname"
+                                            placeholder="Enter your last name"
+                                            required/>
                                 </span>
                             <span class="ec-register-wrap ec-register-half">
                                     <label>Email*</label>
-                                    <input type="email" name="email" placeholder="Enter your email add..." required/>
+                                    {% for err in signup_form.email.errors %}
+										<small style="color:red;" class="text-danger ml-2">{{ err }}</small>
+									{% endfor %}
+                                    <input
+                                            {% if signup_form.is_bound %} value="{{ signup_form.email.value }}"
+                                            {% endif %} type="email" name="email" placeholder="Enter your email add..."
+                                            required/>
                                 </span>
                             <span class="ec-register-wrap ec-register-half">
                                     <label>Phone Number*</label>
-                                    <input type="text" name="phone_number" placeholder="Enter your phone number"
-                                           required/>
+                                    {% for err in signup_form.mobile.errors %}
+										<small style="color:red;" class="text-danger ml-2">{{ err }}</small>
+									{% endfor %}
+                                    <input
+                                            {% if signup_form.is_bound %} value="{{ signup_form.mobile.value }}"
+                                            {% endif %} type="text" name="mobile" placeholder="Enter your phone number"
+                                            required/>
                                 </span>
 
                             <span class="ec-register-wrap ec-register-half">
                                     <label>Password*</label>
-                                    <input type="password" name="password" placeholder="Enter your password"
+                                    <input type="password" name="password1" placeholder="Enter your password"
                                            required/>
-                                </span>
-                            {% csrf_token %}
+                            </span>
+                            <span class="ec-register-wrap ec-register-half">
+                                    <label>Confirm Password*</label>
+                                    {% for err in signup_form.password2.errors %}
+										<small style="color:red;" class="text-danger ml-2">{{ err }}</small>
+									{% endfor %}
+                                    <input type="password" name="password2" placeholder="Enter your password"
+                                           required/>
+                            </span>
+
                             <span class="ec-register-wrap ec-register-btn">
                                     <button class="btn btn-primary" type="submit">Register</button>
+                                     <a href="{% url 'account:login' %}" class="btn btn-secondary">Login</a>
                                 </span>
                         </form>
                     </div>

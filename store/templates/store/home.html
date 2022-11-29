@@ -1,4 +1,6 @@
-{% load static %}
+{%  extends "store/layout.html" %}
+
+{% block content %}
 <!-- Main Slider Start -->
 <div class="sticky-header-next-sec ec-main-slider section section-space-pb">
     <div class="ec-slider swiper-container main-slider-nav main-slider-dot">
@@ -41,3 +43,7 @@
     </div>
 </div>
 <!-- Main Slider End -->
+{% include "store/product_tab.html" %}
+
+
+{% endblock %}

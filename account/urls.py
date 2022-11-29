@@ -6,5 +6,6 @@ app_name = 'account'
 
 urlpatterns = [
     path('register', register_view, name='register'),
-    path('register/verify/<uuid:token>', verify_user, name='verify_user'),
+    path('login', login_view, name='login'),
+    path("activate/<slug:uidb64>/<slug:token>/", account_activate, name="activate"),
 ]
